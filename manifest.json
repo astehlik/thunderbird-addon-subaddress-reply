@@ -2,8 +2,15 @@
     "manifest_version": 2,
     "name": "Reply with subaddress",
     "description": "Sets from address of replies to original recipient",
-    "version": "1.0",
+    "version": "0.1.0",
     "author": "Alexander Stehlik",
+    "applications": {
+        "gecko": {
+            "id": "subaddress-reply@swebhosting.de",
+            "strict_min_version": "91.3.1",
+            "strict_max_version": "*"
+        }
+    },
     "icons": {
         "64": "images/internet.png",
         "32": "images/internet-32px.png",
