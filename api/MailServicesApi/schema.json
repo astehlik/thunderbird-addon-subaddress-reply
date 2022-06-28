@@ -1,0 +1,20 @@
+[
+    {
+        "namespace": "MailServicesApi",
+        "functions": [
+            {
+                "name": "parseEncodedHeaderW",
+                "type": "function",
+                "description": "MailServices.headerParser.parseEncodedHeaderW",
+                "async": true,
+                "parameters": [
+                    {
+                        "name": "header",
+                        "type": "string",
+                        "description": "The header value"
+                    }
+                ]
+            }
+        ]
+    }
+]

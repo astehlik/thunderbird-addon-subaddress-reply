@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+    "name": "Reply with subaddress",
+    "description": "Sets from address of replies to original recipient",
+    "version": "1.0",
+    "author": "Alexander Stehlik",
+    "icons": {
+        "64": "images/internet.png",
+        "32": "images/internet-32px.png",
+        "16": "images/internet-16px.png"
+    },
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "experiment_apis": {
+        "MailServicesApi": {
+            "schema": "api/MailServicesApi/schema.json",
+            "parent": {
+                "scopes": ["addon_parent"],
+                "paths": [["MailServicesApi"]],
+                "script": "api/MailServicesApi/implementation.js"
+            }
+        }
+    },
+    "permissions": [
+        "tabs",
+        "compose",
+        "messagesRead"
+    ]
+}
