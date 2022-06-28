@@ -7,8 +7,7 @@
     "applications": {
         "gecko": {
             "id": "subaddress-reply@swebhosting.de",
-            "strict_min_version": "91.3.1",
-            "strict_max_version": "*"
+            "strict_min_version": "91.3.1"
         }
     },
     "icons": {
