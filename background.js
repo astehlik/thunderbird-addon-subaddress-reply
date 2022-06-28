@@ -62,8 +62,6 @@ async function handleTabCreation(tab) {
     }
 
     const originalFrom = await extractAddressPartsFromHeader(composeDetails.from);
-    console.log(composeDetails);
-    console.log(originalFrom);
     if (!originalFrom || !originalFrom.email) {
         return;
     }
