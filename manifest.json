@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Reply with subaddress",
     "description": "Sets from address of replies to original recipient",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "author": "Alexander Stehlik",
     "applications": {
         "gecko": {
