@@ -4,15 +4,15 @@ function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function buildNewFrom(email, name) {
+function buildNewFrom(address, name) {
     if (!name) {
-        return email;
+        return address;
     }
-    return name + " <" + email + ">";
+    return name + " <" + address + ">";
 }
 
 async function extractAddressPartsFromHeader(header) {
-    const addresses = await browser.MailServicesApi.parseEncodedHeaderW(header);
+    const addresses = await emailAddresses.parseAddressList(header);
     if (!addresses.length) {
         return null;
     }
@@ -28,10 +28,10 @@ async function extractRecipientMailAddresses(message) {
     const allMailAddresses = []
     for (let recipient of allRecipients) {
         const addressParts = await extractAddressPartsFromHeader(recipient);
-        if (!addressParts || !addressParts.email) {
+        if (!addressParts || !addressParts.address) {
             return;
         }
-        allMailAddresses.push(addressParts.email);
+        allMailAddresses.push(addressParts.address);
     }
     return allMailAddresses;
 }
@@ -62,7 +62,7 @@ async function handleTabCreation(tab) {
     }
 
     const originalFrom = await extractAddressPartsFromHeader(composeDetails.from);
-    if (!originalFrom || !originalFrom.email) {
+    if (!originalFrom || !originalFrom.address) {
         return;
     }
 
@@ -74,11 +74,11 @@ async function handleTabCreation(tab) {
     const relatedRecipients = await extractRecipientMailAddresses(relatedMessage);
 
     // If message was sent to original mail address we do not need to look for subaddresses.
-    if (relatedRecipients.includes(originalFrom.email)) {
+    if (relatedRecipients.includes(originalFrom.address)) {
         return;
     }
 
-    const matchingSubaddress = detectSubaddress(originalFrom.email, relatedRecipients);
+    const matchingSubaddress = detectSubaddress(originalFrom.address, relatedRecipients);
     if (!matchingSubaddress) {
         return;
     }
