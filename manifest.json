@@ -18,18 +18,9 @@
     },
     "background": {
         "scripts": [
+            "lib/email-addresses.js",
             "background.js"
         ]
-    },
-    "experiment_apis": {
-        "MailServicesApi": {
-            "schema": "api/MailServicesApi/schema.json",
-            "parent": {
-                "scopes": ["addon_parent"],
-                "paths": [["MailServicesApi"]],
-                "script": "api/MailServicesApi/implementation.js"
-            }
-        }
     },
     "permissions": [
         "tabs",
