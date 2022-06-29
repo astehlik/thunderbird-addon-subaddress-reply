@@ -45,18 +45,3 @@ If it is a reply we set the From-Address to the subaddress if required.
 
 We fetch the message that the user replies to. The message is needed to get its recipients to check if it
 was sent to a subaddress.
-
-## Experiments APIs
-
-This Add-on uses an Experiments API for splitting name and email from a combined string.
-
-It uses `MailServices.headerParser.parseEncodedHeaderW()` to archive it.
-
-E.g. `My Name <mymail@domain.tld>` is converted to:
-
-```json
-{
-    "name": "My Name",
-    "email": "mymail@domain.tld"
-}
-```
